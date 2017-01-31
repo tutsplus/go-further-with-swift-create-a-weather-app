@@ -38,11 +38,33 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         debugAnimations()
+        appearAnimation()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func appearAnimation() {
+        let flyIn = CASpringAnimation(keyPath: "position.y")
+        flyIn.mass = 50.0
+        flyIn.damping = 100.0
+        flyIn.stiffness = 250.0
+        flyIn.fromValue = view.bounds.size.height
+        flyIn.toValue = temperatureLabel.layer.position.y
+        flyIn.duration = 8.5
+        
+        temperatureLabel.layer.add(flyIn, forKey: nil)
+        
+        let fadeIn = CABasicAnimation(keyPath: "opacity")
+        fadeIn.fromValue = 0.0
+        fadeIn.toValue = 1.0
+        fadeIn.duration = 1.0
+        fadeIn.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        conditionLabel.layer.add(fadeIn, forKey: nil)
+        conditionImageView.layer.add(fadeIn, forKey: nil)
     }
 
     func debugAnimations() {
@@ -53,8 +75,6 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 1, options: [.curveEaseInOut], animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
-        
-        
         
         let overlay = duplicateImageView(imageView: backgroundImageView, newImageName: debugSwitch ? "bg_other" : "bg_snowy")
         overlay.alpha = 0.0
@@ -69,10 +89,10 @@ class ViewController: UIViewController {
             self.backgroundImageView.image = overlay.image
             overlay.removeFromSuperview()
         }
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { 
-            self.debugAnimations()
-        }
+//        
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { 
+//            self.debugAnimations()
+//        }
     }
     
     func duplicateImageView(imageView: UIImageView, newImageName: String) -> UIImageView {
