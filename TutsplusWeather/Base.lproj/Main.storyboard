@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ryy-wX-adk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_other" translatesAutoresizingMaskIntoConstraints="NO" id="Ryy-wX-adk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.38229872094848549" green="0.80793863327360527" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
@@ -85,6 +85,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="Ryy-wX-adk" id="SEl-7Y-TgC"/>
                         <outlet property="cityLabel" destination="EuK-4t-Xng" id="5zr-X3-MYF"/>
+                        <outlet property="cityTopConstraint" destination="mXX-lD-bD1" id="aHZ-Ar-vQ4"/>
                         <outlet property="conditionImageView" destination="E13-fz-Ybt" id="hgE-r2-Ngu"/>
                         <outlet property="conditionLabel" destination="cnZ-kr-fuo" id="3Zs-x6-vSc"/>
                         <outlet property="temperatureLabel" destination="asb-mt-a3s" id="ylY-D1-zSH"/>
@@ -95,4 +96,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bg_other" width="2268" height="4032"/>
+    </resources>
 </document>
