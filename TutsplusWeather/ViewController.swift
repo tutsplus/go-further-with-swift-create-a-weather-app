@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UIViewController {
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var conditionImageView: UIImageView!
+    @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
 
+    fileprivate let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        locationManager.delegate = self
+        
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,3 +36,12 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        // TODO: Do something with the location manager
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        fatalError(error.localizedDescription)
+    }
+}
