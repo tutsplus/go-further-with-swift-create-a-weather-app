@@ -34,6 +34,9 @@ class ViewController: UIViewController {
         
         cityTopConstraint.constant = -80
         
+        WeatherAPI.shared.getWeatherData(latitude: 1, longitude: 1) { (_,_) in }
+        WeatherAPI.shared.getWeatherData(latitude: 2, longitude: 2) { (_,_) in }
+        WeatherAPI.shared.getWeatherData(latitude: 3, longitude: 3) { (_,_) in }
     }
     
     override func viewDidAppear(_ animated: Bool) {
