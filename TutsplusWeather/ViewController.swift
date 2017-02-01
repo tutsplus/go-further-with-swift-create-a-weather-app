@@ -32,6 +32,8 @@ class ViewController: UIViewController {
         }
         
         cityTopConstraint.constant = -80
+        
+        let _ = WeatherAPI.shared
     }
     
     override func viewDidAppear(_ animated: Bool) {
