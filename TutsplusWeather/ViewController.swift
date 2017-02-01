@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     fileprivate let locationManager = CLLocationManager()
     
     var debugSwitch = false
+    var previousLocation : CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,6 @@ class ViewController: UIViewController {
         
         cityTopConstraint.constant = -80
         
-        let _ = WeatherAPI.shared
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,10 +118,47 @@ class ViewController: UIViewController {
 
 extension ViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        // TODO: Do something with the location manager
+        if status == .authorizedWhenInUse {
+            manager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            let distance = previousLocation?.distance(from: location)
+            
+            if previousLocation == nil || distance! > 0.0 {
+                let API = WeatherAPI.shared
+                API.getWeatherData(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, completion: { (data, error) in
+                    if let data = data {
+                        let json = data as! [String : Any]
+                        let main = json["main"] as! [String : Any]
+                        let weather = json["weather"] as! [[String : Any]]
+                        
+                        self.cityLabel.text = "\(json["name"]!)"
+                        self.temperatureLabel.text = "\(main["temp"]! as! Int)°"
+                        self.conditionLabel.text = "\(weather[0]["description"]!)".capitalized
+                        
+                        switch (weather[0]["id"] as! Int) {
+                        case 200...299:
+                            self.conditionImageView.image = #imageLiteral(resourceName: "Storm")
+                        case 300...399:
+                            self.conditionImageView.image = #imageLiteral(resourceName: "Drizzle")
+                        case 500...599:
+                            self.conditionImageView.image = #imageLiteral(resourceName: "Rain")
+                        case 600...699:
+                            self.conditionImageView.image = #imageLiteral(resourceName: "Snow")
+                        default:
+                            self.conditionImageView.image = #imageLiteral(resourceName: "Clear")
+                        }
+                    }
+                })
+                
+                self.previousLocation = location
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        fatalError(error.localizedDescription)
     }
 }

@@ -23,10 +23,33 @@ class WeatherAPI {
         
         session = URLSession(configuration: configuration)
         
-        let task = session.dataTask(with: apiUrl(latitude: 46.0, longitude: 16.8)) { (data, response, error) in
-            guard let _ = data else {
-                print("No data")
+    }
+    
+    public func getWeatherData(latitude: Double, longitude: Double, completion: @escaping (Any?, Error?) -> ()) {
+        var request = URLRequest(url: apiUrl(latitude: latitude, longitude: longitude))
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                print(error?.localizedDescription ?? "No data")
                 return
+            }
+            
+            if let response = (response as? HTTPURLResponse) {
+                print("Status Code: \(response.statusCode)")
+//                print("Headers: \(response.allHeaderFields)")
+                
+                let json = try? JSONSerialization.jsonObject(with: data)
+                
+                OperationQueue.main.addOperation {
+                    self.networkIndicatorCount -= 1
+                    completion(json, nil)
+                }
+            } else {
+                OperationQueue.main.addOperation {
+                    self.networkIndicatorCount -= 1
+                    completion(nil, error)
+                }
             }
         }
         
