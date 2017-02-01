@@ -30,7 +30,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XIU-tc-hg2">
                                 <rect key="frame" x="76" y="203" width="223" height="261"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E13-fz-Ybt">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Drizzle" translatesAutoresizingMaskIntoConstraints="NO" id="E13-fz-Ybt">
                                         <rect key="frame" x="0.0" y="0.0" width="223" height="223"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="E13-fz-Ybt" secondAttribute="height" multiplier="1:1" id="weV-j8-sMJ"/>
@@ -97,6 +97,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Drizzle" width="468" height="406"/>
         <image name="bg_other" width="2268" height="4032"/>
     </resources>
 </document>

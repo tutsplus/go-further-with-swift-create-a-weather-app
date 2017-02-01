@@ -57,14 +57,24 @@ class ViewController: UIViewController {
         
         temperatureLabel.layer.add(flyIn, forKey: nil)
         
+        let animationGroup = CAAnimationGroup()
+        animationGroup.duration = 1.0
+        animationGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animationGroup.beginTime = CACurrentMediaTime() + 2
+        animationGroup.fillMode = kCAFillModeBackwards
+        
         let fadeIn = CABasicAnimation(keyPath: "opacity")
         fadeIn.fromValue = 0.0
         fadeIn.toValue = 1.0
-        fadeIn.duration = 1.0
-        fadeIn.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
-        conditionLabel.layer.add(fadeIn, forKey: nil)
-        conditionImageView.layer.add(fadeIn, forKey: nil)
+        let scaleDown = CABasicAnimation(keyPath: "transform.scale")
+        scaleDown.fromValue = 2.5
+        scaleDown.toValue = 1.0
+        
+        animationGroup.animations = [fadeIn, scaleDown]
+        
+        conditionLabel.layer.add(animationGroup, forKey: nil)
+        conditionImageView.layer.add(animationGroup, forKey: nil)
     }
 
     func debugAnimations() {
