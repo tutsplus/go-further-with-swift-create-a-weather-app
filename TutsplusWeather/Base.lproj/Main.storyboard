@@ -43,7 +43,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsZ-Cx-DvZ" customClass="ConditionView" customModule="TutsplusWeather" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FsZ-Cx-DvZ" customClass="ConditionView" customModule="TutsplusWeather" customModuleProvider="target">
                                 <rect key="frame" x="76" y="196" width="223" height="275"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="spacing">
@@ -62,6 +62,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wE-GD-mQw" customClass="DrawingCanvas" customModule="TutsplusWeather" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -69,6 +80,7 @@
                             <constraint firstItem="asb-mt-a3s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="1BZ-fS-nb5"/>
                             <constraint firstItem="FsZ-Cx-DvZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2Z3-G8-UwY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FsZ-Cx-DvZ" secondAttribute="trailing" constant="60" id="3U7-ik-rdm"/>
+                            <constraint firstItem="1wE-GD-mQw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Dbe-kH-mWc"/>
                             <constraint firstItem="FsZ-Cx-DvZ" firstAttribute="top" secondItem="rwu-fI-yZI" secondAttribute="bottom" constant="8" symbolic="YES" id="EmP-05-zi7"/>
                             <constraint firstAttribute="trailing" secondItem="Ryy-wX-adk" secondAttribute="trailing" id="Hpu-zp-aiQ"/>
                             <constraint firstItem="FsZ-Cx-DvZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="JOf-Vk-ayW"/>
@@ -80,8 +92,11 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ryy-wX-adk" secondAttribute="bottom" id="iIk-SF-Qch"/>
                             <constraint firstItem="rwu-fI-yZI" firstAttribute="top" secondItem="EuK-4t-Xng" secondAttribute="bottom" constant="20" id="kUi-Zt-bDP"/>
                             <constraint firstItem="EuK-4t-Xng" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="mXX-lD-bD1"/>
+                            <constraint firstItem="1wE-GD-mQw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oJn-Zn-nKs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EuK-4t-Xng" secondAttribute="trailing" id="qsE-mT-j8g"/>
+                            <constraint firstAttribute="trailing" secondItem="1wE-GD-mQw" secondAttribute="trailing" id="tn0-KQ-iE5"/>
                             <constraint firstItem="asb-mt-a3s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uSW-24-z7n"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1wE-GD-mQw" secondAttribute="bottom" id="z7O-Kg-bYa"/>
                         </constraints>
                     </view>
                     <connections>

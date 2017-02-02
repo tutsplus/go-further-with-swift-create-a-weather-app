@@ -15,6 +15,7 @@
 		90786B281E421F990004A967 /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90786B271E421F990004A967 /* WeatherAPI.swift */; };
 		90786B2C1E4263820004A967 /* ConditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90786B2B1E4263820004A967 /* ConditionView.swift */; };
 		90786B2E1E430E3D0004A967 /* WindDirectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90786B2D1E430E3D0004A967 /* WindDirectionView.swift */; };
+		90786B311E437B1C0004A967 /* DrawingCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90786B301E437B1C0004A967 /* DrawingCanvas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		90786B271E421F990004A967 /* WeatherAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
 		90786B2B1E4263820004A967 /* ConditionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionView.swift; sourceTree = "<group>"; };
 		90786B2D1E430E3D0004A967 /* WindDirectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindDirectionView.swift; sourceTree = "<group>"; };
+		90786B301E437B1C0004A967 /* DrawingCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingCanvas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				90786B211E40DDB10004A967 /* Info.plist */,
 				90786B2B1E4263820004A967 /* ConditionView.swift */,
 				90786B2D1E430E3D0004A967 /* WindDirectionView.swift */,
+				90786B301E437B1C0004A967 /* DrawingCanvas.swift */,
 			);
 			path = TutsplusWeather;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			files = (
 				90786B2C1E4263820004A967 /* ConditionView.swift in Sources */,
 				90786B281E421F990004A967 /* WeatherAPI.swift in Sources */,
+				90786B311E437B1C0004A967 /* DrawingCanvas.swift in Sources */,
 				90786B181E40DDB10004A967 /* ViewController.swift in Sources */,
 				90786B2E1E430E3D0004A967 /* WindDirectionView.swift in Sources */,
 				90786B161E40DDB10004A967 /* AppDelegate.swift in Sources */,
