@@ -51,6 +51,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rwu-fI-yZI" customClass="WindDirectionView" customModule="TutsplusWeather" customModuleProvider="target">
+                                <rect key="frame" x="147" y="106.5" width="81.5" height="81.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rwu-fI-yZI" secondAttribute="height" multiplier="1:1" id="MD9-Mi-10w"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="windDirection">
+                                        <real key="value" value="180"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -58,13 +69,16 @@
                             <constraint firstItem="asb-mt-a3s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="1BZ-fS-nb5"/>
                             <constraint firstItem="FsZ-Cx-DvZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2Z3-G8-UwY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FsZ-Cx-DvZ" secondAttribute="trailing" constant="60" id="3U7-ik-rdm"/>
+                            <constraint firstItem="FsZ-Cx-DvZ" firstAttribute="top" secondItem="rwu-fI-yZI" secondAttribute="bottom" constant="8" symbolic="YES" id="EmP-05-zi7"/>
                             <constraint firstAttribute="trailing" secondItem="Ryy-wX-adk" secondAttribute="trailing" id="Hpu-zp-aiQ"/>
                             <constraint firstItem="FsZ-Cx-DvZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="JOf-Vk-ayW"/>
                             <constraint firstItem="Ryy-wX-adk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ncv-a7-6Pu"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="asb-mt-a3s" secondAttribute="trailing" constant="20" id="WZU-yd-ggY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="asb-mt-a3s" secondAttribute="bottom" constant="20" id="fXO-pc-RFD"/>
+                            <constraint firstItem="rwu-fI-yZI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hmv-x9-jMB"/>
                             <constraint firstItem="Ryy-wX-adk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="i6K-d8-qS9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ryy-wX-adk" secondAttribute="bottom" id="iIk-SF-Qch"/>
+                            <constraint firstItem="rwu-fI-yZI" firstAttribute="top" secondItem="EuK-4t-Xng" secondAttribute="bottom" constant="20" id="kUi-Zt-bDP"/>
                             <constraint firstItem="EuK-4t-Xng" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="mXX-lD-bD1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EuK-4t-Xng" secondAttribute="trailing" id="qsE-mT-j8g"/>
                             <constraint firstItem="asb-mt-a3s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uSW-24-z7n"/>
@@ -76,6 +90,7 @@
                         <outlet property="cityTopConstraint" destination="mXX-lD-bD1" id="aHZ-Ar-vQ4"/>
                         <outlet property="conditionView" destination="FsZ-Cx-DvZ" id="KP0-Ym-UKC"/>
                         <outlet property="temperatureLabel" destination="asb-mt-a3s" id="ylY-D1-zSH"/>
+                        <outlet property="windDirectionView" destination="rwu-fI-yZI" id="dEY-NH-bKI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

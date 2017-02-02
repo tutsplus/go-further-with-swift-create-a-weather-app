@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var conditionView : ConditionView!
+    @IBOutlet weak var windDirectionView: WindDirectionView!
     
     @IBOutlet weak var cityTopConstraint: NSLayoutConstraint!
 
@@ -130,10 +131,12 @@ extension ViewController : CLLocationManagerDelegate {
                     if let data = data {
                         let json = data as! [String : Any]
                         let main = json["main"] as! [String : Any]
+                        let wind = json["wind"] as! [String : Any]
                         let weather = json["weather"] as! [[String : Any]]
                         
                         self.cityLabel.text = "\(json["name"]!)"
                         self.temperatureLabel.text = "\(main["temp"]! as! Int)°"
+                        self.windDirectionView.windDirection = wind["deg"] as! CGFloat
                         
                         switch (weather[0]["id"] as! Int) {
                         case 200...299:
