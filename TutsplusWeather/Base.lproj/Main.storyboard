@@ -43,7 +43,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FsZ-Cx-DvZ" customClass="ConditionView" customModule="TutsplusWeather" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsZ-Cx-DvZ" customClass="ConditionView" customModule="TutsplusWeather" customModuleProvider="target">
                                 <rect key="frame" x="76" y="196" width="223" height="275"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="spacing">
@@ -58,7 +58,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="windDirection">
-                                        <real key="value" value="180"/>
+                                        <real key="value" value="111"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>

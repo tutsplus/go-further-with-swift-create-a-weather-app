@@ -85,20 +85,6 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 1, options: [.curveEaseInOut], animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
-        
-        let overlay = duplicateImageView(imageView: backgroundImageView, newImageName: debugSwitch ? "bg_other" : "bg_snowy")
-        overlay.alpha = 0.0
-        overlay.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        
-        backgroundImageView.superview!.insertSubview(overlay, aboveSubview: backgroundImageView)
-        
-        UIView.animate(withDuration: 0.5, animations: { 
-            overlay.alpha = 1.0
-            overlay.transform = .identity
-        }) { (_) in
-            self.backgroundImageView.image = overlay.image
-            overlay.removeFromSuperview()
-        }
 //        
 //        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { 
 //            self.debugAnimations()
@@ -136,7 +122,11 @@ extension ViewController : CLLocationManagerDelegate {
                         
                         self.cityLabel.text = "\(json["name"]!)"
                         self.temperatureLabel.text = "\(main["temp"]! as! Int)°"
-                        self.windDirectionView.windDirection = wind["deg"] as! CGFloat
+                        if let degrees = wind["deg"] as? CGFloat {
+                            self.windDirectionView.windDirection = degrees
+                        }
+                        
+                        var newImageName = "bg_other"
                         
                         switch (weather[0]["id"] as! Int) {
                         case 200...299:
@@ -146,11 +136,31 @@ extension ViewController : CLLocationManagerDelegate {
                         case 500...599:
                             self.conditionView.condition = .rain(detail: (weather[0]["description"] as! String))
                         case 600...699:
+                            newImageName = "bg_snowy"
                             self.conditionView.condition = .snow(detail: (weather[0]["description"] as! String))
+                        case 800:
+                            newImageName = "bg_sunny"
+                            self.conditionView.condition = .other(detail: (weather[0]["description"] as! String))
                         case 801...809:
+                            newImageName = "bg_cloudy"
                             self.conditionView.condition = .clouds(detail: (weather[0]["description"] as! String))
                         default:
                             self.conditionView.condition = .other(detail: (weather[0]["description"] as! String))
+                        }
+                        
+                        
+                        let overlay = self.duplicateImageView(imageView: self.backgroundImageView, newImageName: newImageName)
+                        overlay.alpha = 0.0
+                        overlay.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                        
+                        self.backgroundImageView.superview!.insertSubview(overlay, aboveSubview: self.backgroundImageView)
+                        
+                        UIView.animate(withDuration: 0.5, animations: {
+                            overlay.alpha = 1.0
+                            overlay.transform = .identity
+                        }) { (_) in
+                            self.backgroundImageView.image = overlay.image
+                            overlay.removeFromSuperview()
                         }
                     }
                 })
