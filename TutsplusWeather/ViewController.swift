@@ -11,10 +11,9 @@ import CoreLocation
 
 class ViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var conditionImageView: UIImageView!
-    @IBOutlet weak var conditionLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var conditionView : ConditionView!
     
     @IBOutlet weak var cityTopConstraint: NSLayoutConstraint!
 
@@ -33,10 +32,6 @@ class ViewController: UIViewController {
         }
         
         cityTopConstraint.constant = -80
-        
-        WeatherAPI.shared.getWeatherData(latitude: 1, longitude: 1) { (_,_) in }
-        WeatherAPI.shared.getWeatherData(latitude: 2, longitude: 2) { (_,_) in }
-        WeatherAPI.shared.getWeatherData(latitude: 3, longitude: 3) { (_,_) in }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,8 +73,7 @@ class ViewController: UIViewController {
         
         animationGroup.animations = [fadeIn, scaleDown]
         
-        conditionLabel.layer.add(animationGroup, forKey: nil)
-        conditionImageView.layer.add(animationGroup, forKey: nil)
+        conditionView.layer.add(animationGroup, forKey: nil)
     }
 
     func debugAnimations() {
@@ -140,19 +134,20 @@ extension ViewController : CLLocationManagerDelegate {
                         
                         self.cityLabel.text = "\(json["name"]!)"
                         self.temperatureLabel.text = "\(main["temp"]! as! Int)°"
-                        self.conditionLabel.text = "\(weather[0]["description"]!)".capitalized
                         
                         switch (weather[0]["id"] as! Int) {
                         case 200...299:
-                            self.conditionImageView.image = #imageLiteral(resourceName: "Storm")
+                            self.conditionView.condition = .storm(detail: (weather[0]["description"] as! String))
                         case 300...399:
-                            self.conditionImageView.image = #imageLiteral(resourceName: "Drizzle")
+                            self.conditionView.condition = .drizzle(detail: (weather[0]["description"] as! String))
                         case 500...599:
-                            self.conditionImageView.image = #imageLiteral(resourceName: "Rain")
+                            self.conditionView.condition = .rain(detail: (weather[0]["description"] as! String))
                         case 600...699:
-                            self.conditionImageView.image = #imageLiteral(resourceName: "Snow")
+                            self.conditionView.condition = .snow(detail: (weather[0]["description"] as! String))
+                        case 801...809:
+                            self.conditionView.condition = .clouds(detail: (weather[0]["description"] as! String))
                         default:
-                            self.conditionImageView.image = #imageLiteral(resourceName: "Clear")
+                            self.conditionView.condition = .other(detail: (weather[0]["description"] as! String))
                         }
                     }
                 })

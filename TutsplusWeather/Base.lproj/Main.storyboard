@@ -27,25 +27,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.38229872094848549" green="0.80793863327360527" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XIU-tc-hg2">
-                                <rect key="frame" x="76" y="203" width="223" height="261"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Drizzle" translatesAutoresizingMaskIntoConstraints="NO" id="E13-fz-Ybt">
-                                        <rect key="frame" x="0.0" y="0.0" width="223" height="223"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="E13-fz-Ybt" secondAttribute="height" multiplier="1:1" id="weV-j8-sMJ"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnZ-kr-fuo">
-                                        <rect key="frame" x="0.0" y="231" width="223" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <size key="shadowOffset" width="1" height="1"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asb-mt-a3s">
                                 <rect key="frame" x="127" y="501.5" width="121.5" height="145.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="121"/>
@@ -62,23 +43,30 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsZ-Cx-DvZ" customClass="ConditionView" customModule="TutsplusWeather" customModuleProvider="target">
+                                <rect key="frame" x="76" y="196" width="223" height="275"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="spacing">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EuK-4t-Xng" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="03U-U9-sGv"/>
                             <constraint firstItem="asb-mt-a3s" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="1BZ-fS-nb5"/>
-                            <constraint firstItem="XIU-tc-hg2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cfh-X6-HE8"/>
+                            <constraint firstItem="FsZ-Cx-DvZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2Z3-G8-UwY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FsZ-Cx-DvZ" secondAttribute="trailing" constant="60" id="3U7-ik-rdm"/>
                             <constraint firstAttribute="trailing" secondItem="Ryy-wX-adk" secondAttribute="trailing" id="Hpu-zp-aiQ"/>
+                            <constraint firstItem="FsZ-Cx-DvZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="JOf-Vk-ayW"/>
                             <constraint firstItem="Ryy-wX-adk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ncv-a7-6Pu"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="asb-mt-a3s" secondAttribute="trailing" constant="20" id="WZU-yd-ggY"/>
-                            <constraint firstItem="XIU-tc-hg2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="cMh-Vv-Xmo"/>
-                            <constraint firstItem="XIU-tc-hg2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ewD-Bt-jEe"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="asb-mt-a3s" secondAttribute="bottom" constant="20" id="fXO-pc-RFD"/>
                             <constraint firstItem="Ryy-wX-adk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="i6K-d8-qS9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ryy-wX-adk" secondAttribute="bottom" id="iIk-SF-Qch"/>
                             <constraint firstItem="EuK-4t-Xng" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="mXX-lD-bD1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EuK-4t-Xng" secondAttribute="trailing" id="qsE-mT-j8g"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="XIU-tc-hg2" secondAttribute="trailing" constant="60" id="tkZ-Mg-3fN"/>
                             <constraint firstItem="asb-mt-a3s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uSW-24-z7n"/>
                         </constraints>
                     </view>
@@ -86,8 +74,7 @@
                         <outlet property="backgroundImageView" destination="Ryy-wX-adk" id="SEl-7Y-TgC"/>
                         <outlet property="cityLabel" destination="EuK-4t-Xng" id="5zr-X3-MYF"/>
                         <outlet property="cityTopConstraint" destination="mXX-lD-bD1" id="aHZ-Ar-vQ4"/>
-                        <outlet property="conditionImageView" destination="E13-fz-Ybt" id="hgE-r2-Ngu"/>
-                        <outlet property="conditionLabel" destination="cnZ-kr-fuo" id="3Zs-x6-vSc"/>
+                        <outlet property="conditionView" destination="FsZ-Cx-DvZ" id="KP0-Ym-UKC"/>
                         <outlet property="temperatureLabel" destination="asb-mt-a3s" id="ylY-D1-zSH"/>
                     </connections>
                 </viewController>
@@ -97,7 +84,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Drizzle" width="468" height="406"/>
         <image name="bg_other" width="2268" height="4032"/>
     </resources>
 </document>
